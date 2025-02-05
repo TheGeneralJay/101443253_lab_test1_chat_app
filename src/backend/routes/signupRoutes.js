@@ -32,7 +32,10 @@ router.post("/", async (req, res) => {
     // Save the user and send confirmation.
     await user.save();
 
-    res.sendFile(path.join(__dirname, "..", "public", "login.html"));
+    res.json(user);
+    const dir = path.join(__dirname, "../..", "public", "pages");
+    res.sendFile(`${dir}/login.html`);
+    res.end();
   } catch (err) {
     res.status(400).send("ERROR: An unexpected error has occurred.");
     return;

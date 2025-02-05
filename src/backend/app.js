@@ -25,6 +25,10 @@ app.get("/view/login", (req, res) => {
   res.sendFile(`${publicPath}/pages/login.html`);
 });
 
+app.get("/view/signup", (req, res) => {
+  res.sendFile(`${publicPath}/pages/signup.html`);
+});
+
 // Create the socket server.
 const io = socketio(server);
 
