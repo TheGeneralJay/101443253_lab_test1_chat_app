@@ -1,5 +1,5 @@
 html {
-    background-color: grey;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, white 46%, rgb(132, 132, 178) 100%);
 }
 
 h1, h3, h4, p, label {
@@ -30,7 +30,7 @@ label {
     margin: 20px auto;
     padding: 10px;
     width: 50%;
-    border: 5px solid white;
+    border: 5px solid rgba(2,0,36,1);
 }
 
 #header-btns>button {
@@ -50,7 +50,7 @@ label {
 #form-container {
     margin: 0 auto;
     width: 50%;
-    border: 5px solid white;
+    border: 5px solid rgba(2,0,36,1);
 }
 
 #chat-container {
@@ -59,7 +59,7 @@ label {
     padding: 10px;
     margin: 0 auto;
     width: 50%;
-    border: 5px solid white;
+    border: 5px solid rgba(2,0,36,1);
 }
 
 #group-options {
@@ -67,7 +67,7 @@ label {
     padding: 10px;
     text-align: center;
     width: 50%;
-    border: 5px solid white;
+    border: 5px solid rgba(2,0,36,1);
 }
 
 #join-btn {
@@ -88,7 +88,7 @@ label {
     padding: 10px;
     text-align: center;
     width: 50%;
-    border: 5px solid white;
+    border: 5px solid rgba(2,0,36,1);
 }
 
 #message, #to_user {
@@ -97,9 +97,10 @@ label {
 }
 
 #container {
+    padding: 10px;
     text-align: left;
     background-color: white;
-    border: 5px solid white;
+    border: 5px solid rgba(2,0,36,1);
     margin: 20px auto;
     width: 50%;
 }
