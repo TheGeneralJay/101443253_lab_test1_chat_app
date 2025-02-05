@@ -10,28 +10,59 @@
 </head>
 <body>
     <h1>Welcome to the Chat Application.</h1>
-    <a href="/view/login">Login</a>
-    <a href="/view/signup">Signup</a>
+
+    <div id="header-btns">
+        <button><a href="/view/login">Login</a></button>
+        <button><a href="/view/signup">Signup</a></button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        const logout = () => {
+            localStorage.clear();
+
+            window.location.replace("http://localhost:3000/view/login");
+        }
+    </script>
     
-    <h4 id="user-header"></h4>
+    <div id="chat-container">
+        <h4 id="user-header"></h4>
+        <h4 id="current-group"></h4>
 
-    <input type="radio" id="group1", name="group", value="fullstack">Full Stack <br />
-    <input type="radio" id="group2", name="group", value="cybersecurity">Cyber Security <br />
-    <button onclick="joinGroup()">Join Group</button>
+        <div id="group-options">
+            <h3>Pick a group to join!</h3>
+            <input type="radio" id="group1", name="group", value="Full Stack">Full Stack <br>
+            <input type="radio" id="group2", name="group", value="Cyber Security">Cyber Security <br>
+            <input type="radio" id="group3", name="group", value="Private Message">Private Message
+        </div>
 
-    <label for="from_user">From: </label>
-    <input type="text" name="from_user" id="from_user">
+        <br>
 
-    <label for="to_user">To: </label>
-    <input type="text" name="to_user" id="to_user">
+        <button id="join-btn" onclick="joinGroup()">Join Group</button>
 
-    <input type="text" id="message" name="message" placeholder="Enter message">
-    <button onclick="sendPrivateMsg()">Send Private Message</button>
-    <button onclick="sendGroupMsg()">Send Group Message</button>
-    <button onclick="viewPrivateHistory()">View Private Message History</button>
-    <button onclick="viewGroupHistory()">View Group Message History</button>
-    <div id="container">
-        <p>Chat History</p>
+        <br>
+
+        <br>
+
+        <div id="msg-container" hidden>
+            <label for="to_user">Send Message To: </label>
+            <input type="text" name="to_user" id="to_user" placeholder="Username..." hidden>
+
+            <br>
+            <br>
+
+            <input type="text" id="message" name="message" placeholder="Enter message">
+            <button id="send-grp" onclick="sendGroupMsg()" hidden>Send Group Message</button>
+            <button id="send-prv" onclick="sendPrivateMsg()" hidden>Send Private Message</button>
+        </div>
+
+        <br>
+
+        <button onclick="viewPrivateHistory()" hidden>View Private Message History</button>
+
+        <div id="container">
+            <p id="chat-hstry"><b>Chat History</b></p>
+        </div>
     </div>
 </body>
 </html>

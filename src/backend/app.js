@@ -44,8 +44,9 @@ io.on("connection", (socket) => {
 
   // On connection, list the messages.
   socket.on("privateMessageHistory", async (data) => {
-    // PRIVATE.
-    const messageHistory = await db.PrivateMessage.find({});
+    const messageHistory = await db.PrivateMessage.find({
+      from_user: data,
+    });
 
     io.emit("privateMessageHistory", messageHistory);
   });
