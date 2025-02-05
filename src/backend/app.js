@@ -11,6 +11,7 @@ const publicPath = path.join(__dirname, "..", "public");
 
 app.use(express.json());
 app.use(express.static(publicPath));
+app.use(express.urlencoded());
 
 const server = app.listen(PORT, () => {
   console.log(`Chat server at http://localhost:${PORT}`);
@@ -18,6 +19,10 @@ const server = app.listen(PORT, () => {
 
 app.get("/", (req, res) => {
   res.sendFile(`${publicPath}/pages/chat-app.html`);
+});
+
+app.get("/view/login", (req, res) => {
+  res.sendFile(`${publicPath}/pages/login.html`);
 });
 
 // Create the socket server.

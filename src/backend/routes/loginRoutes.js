@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("../db/dbConnection");
 const router = express.Router();
+const path = require("path");
 
 // DB Connection.
 db.mongoose.connect(db.uri);
@@ -31,9 +32,10 @@ router.post("/", async (req, res) => {
   try {
     console.log(existingUser.password);
     if (existingUser.password === dbUser.password) {
-      res.status(200).send(dbUser);
-    } else {
-      console.log("incorrect password");
+      res.json(dbUser);
+      const dir = path.join(__dirname, "../..", "public", "pages");
+      res.sendFile(`${dir}/chat-app.html`);
+      res.end();
     }
   } catch (err) {
     console.log(err);

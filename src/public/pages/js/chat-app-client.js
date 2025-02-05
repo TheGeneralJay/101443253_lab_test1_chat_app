@@ -6,7 +6,14 @@ ioClient.on("connect", () => {
 
 ioClient.on("privateMessage", (data) => {
   const container = document.getElementById("container");
-  const msg = `<p><b>${data.from_user}</b>: ${data.message}</p>`;
+  const msg = `<p><b>${data.from_user} (${date})</b>: ${data.message}</p>`;
+
+  container.innerHTML += msg;
+});
+
+ioClient.on("groupMessage", (data) => {
+  const container = document.getElementById("container");
+  const msg = `<p><b>${data.from_user} (${date})</b>: ${data.message}</p>`;
 
   container.innerHTML += msg;
 });
