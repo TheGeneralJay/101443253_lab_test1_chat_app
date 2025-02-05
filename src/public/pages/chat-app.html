@@ -10,6 +10,12 @@
 </head>
 <body>
     <h1>Welcome to the Chat Application.</h1>
+    
+    <h4 id="user-header"></h4>
+
+    <input type="radio" id="group1", name="group", value="fullstack">Full Stack <br />
+    <input type="radio" id="group2", name="group", value="cybersecurity">Cyber Security <br />
+    <button onclick="joinGroup()">Join Group</button>
 
     <label for="from_user">From: </label>
     <input type="text" name="from_user" id="from_user">
@@ -18,7 +24,10 @@
     <input type="text" name="to_user" id="to_user">
 
     <input type="text" id="message" name="message" placeholder="Enter message">
-    <button onclick="sendMsg()">Send</button>
+    <button onclick="sendPrivateMsg()">Send Private Message</button>
+    <button onclick="sendGroupMsg()">Send Group Message</button>
+    <button onclick="viewPrivateHistory()">View Private Message History</button>
+    <button onclick="viewGroupHistory()">View Group Message History</button>
     <div id="container">
         <p>Chat History</p>
     </div>

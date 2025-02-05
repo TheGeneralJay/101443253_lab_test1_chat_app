@@ -28,12 +28,36 @@ io.on("connection", (socket) => {
   // socket = client.
   console.log(`New Client: ${socket.id}.`);
 
+  socket.on("joinGroup", (groupName) => {
+    socket.join(groupName);
+    console.log(`Joined ${groupName}!`);
+  });
+
+  // On connection, list the messages.
+  socket.on("privateMessageHistory", async (data) => {
+    // PRIVATE.
+    const messageHistory = await db.PrivateMessage.find({});
+
+    io.emit("privateMessageHistory", messageHistory);
+  });
+
+  socket.on("groupMessageHistory", async (data) => {
+    // Find message history matching proper group name.
+    const messageHistory = await db.GroupMessage.find({ room: data });
+
+    io.emit("groupMessageHistory", messageHistory);
+  });
+
   socket.on("disconnect", () => {
     console.log(`Client disconnected: ${socket.id}.`);
   });
 
-  socket.on("message", (data) => {
-    console.log(`Message from ${socket.id}: ${data}`);
+  socket.on("groupMessage", (data) => {
+    const storedMessage = new db.GroupMessage(data);
+    storedMessage.save();
+
+    // Sends to the whole server.
+    io.emit("groupMessage", data);
   });
 
   socket.on("privateMessage", (data) => {
