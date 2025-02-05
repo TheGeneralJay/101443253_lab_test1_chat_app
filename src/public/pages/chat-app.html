@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to the Chat Application</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../pages/js/chat-app-client.js" defer></script>
 </head>
 <body>
     <h1>Welcome to the Chat Application.</h1>
 
-    <a href="">Chat Application</a>
+    <label for="from_user">From: </label>
+    <input type="text" name="from_user" id="from_user">
+
+    <label for="to_user">To: </label>
+    <input type="text" name="to_user" id="to_user">
+
+    <input type="text" id="message" name="message" placeholder="Enter message">
+    <button onclick="sendMsg()">Send</button>
+    <div id="container">
+        <p>Chat History</p>
+    </div>
 </body>
 </html>

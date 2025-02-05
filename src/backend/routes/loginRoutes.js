@@ -1,23 +1,9 @@
 const express = require("express");
 const db = require("../db/dbConnection");
-const path = require("path");
 const router = express.Router();
 
 // DB Connection.
 db.mongoose.connect(db.uri);
-
-// -----------------------------------------------
-// *** LOGIN VIEW ***
-// -----------------------------------------------
-router.get("/", async (req, res) => {
-  try {
-    // Send user to signup.html.
-    res.sendFile(path.join(__dirname, "../..", "public/pages", "login.html"));
-  } catch (err) {
-    res.status(400).send("ERROR: An unexpected error has occurred.");
-    return;
-  }
-});
 
 // -----------------------------------------------
 // *** LOGIN ***
