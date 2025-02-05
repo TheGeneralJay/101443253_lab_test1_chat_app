@@ -1,5 +1,5 @@
 const express = require("express");
-const db = require("../db/dbConnection.js");
+const db = require("../db/dbConnection");
 const path = require("path");
 const router = express.Router();
 
@@ -12,7 +12,7 @@ db.mongoose.connect(db.uri);
 router.get("/", async (req, res) => {
   try {
     // Send user to signup.html.
-    res.sendFile(path.join(__dirname, "..", "public", "login.html"));
+    res.sendFile(path.join(__dirname, "../..", "public/pages", "login.html"));
   } catch (err) {
     res.status(400).send("ERROR: An unexpected error has occurred.");
     return;
@@ -43,12 +43,14 @@ router.post("/", async (req, res) => {
 
   // Now match the passwords.
   try {
+    console.log(existingUser.password);
     if (existingUser.password === dbUser.password) {
-      res.status(200).send(`Login successful: Welcome, ${dbUser.username}!`);
+      res.status(200).send(dbUser);
     } else {
-      throw new Error();
+      console.log("incorrect password");
     }
   } catch (err) {
+    console.log(err);
     res.status(400).send("ERROR: Incorrect password.");
     return;
   }

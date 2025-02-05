@@ -7,10 +7,12 @@ const db = require("./db/dbConnection.js");
 // Connection to the DB.
 db.mongoose.connect(db.uri);
 
-app.use(express.json());
-
 // Add path to public folder for HTML pages.
-const publicPath = path.join(__dirname, "public");
+const publicPath = path.join(__dirname, "..", "public");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(publicPath));
 
 // Paths.
 const signupPath = "/view/signup";
@@ -24,7 +26,7 @@ app.use(signupPath, signupRoutes);
 app.use(loginPath, loginRoutes);
 
 app.get("/", async (req, res) => {
-  res.sendFile(`${publicPath}/index.html`);
+  res.sendFile(`${publicPath}/pages/index.html`);
 });
 
 app.listen(PORT, () => {

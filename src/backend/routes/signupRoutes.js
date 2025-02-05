@@ -12,7 +12,7 @@ db.mongoose.connect(db.uri);
 router.get("/", async (req, res) => {
   try {
     // Send user to signup.html.
-    res.sendFile(path.join(__dirname, "..", "public", "signup.html"));
+    res.sendFile(path.join(__dirname, "../..", "public/pages", "signup.html"));
   } catch (err) {
     res.status(400).send("ERROR: An unexpected error has occurred.");
     return;
@@ -23,15 +23,17 @@ router.get("/", async (req, res) => {
 // *** CREATE NEW USER / SIGNUP ***
 // -----------------------------------------------
 router.post("/", async (req, res) => {
+  console.log(req.body);
+
   try {
     // Grab request body.
     const user = new db.User(req.body);
 
     // Save the user and send confirmation.
     await user.save();
-    res.status(201).send("User successfully created.");
+
+    res.sendFile(path.join(__dirname, "..", "public", "login.html"));
   } catch (err) {
-    console.log(err);
     res.status(400).send("ERROR: An unexpected error has occurred.");
     return;
   }
