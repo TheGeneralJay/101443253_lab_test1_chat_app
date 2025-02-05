@@ -120,3 +120,43 @@ label {
 #send-prv:hover, #send-grp:hover {
     background-color: rgb(78, 103, 78);
 }
+
+#signupForm {
+    text-align: center;
+}
+
+#signupForm>input {
+    margin: 20px auto;
+}
+
+#signupForm > button {
+    margin: 10px;
+    height: 35px;
+    width: 100px;
+    background-color: rgb(120, 159, 120);
+}
+
+
+#signupForm > button:hover {
+    background-color: rgb(78, 103, 78);
+} 
+
+#loginForm {
+    text-align: center;
+}
+
+#loginForm>input {
+    margin: 20px auto;
+}
+
+#loginForm > button {
+    margin: 10px;
+    height: 35px;
+    width: 100px;
+    background-color: rgb(120, 159, 120);
+}
+
+
+#loginForm > button:hover {
+    background-color: rgb(78, 103, 78);
+} 
